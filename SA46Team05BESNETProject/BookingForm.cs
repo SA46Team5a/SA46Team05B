@@ -130,8 +130,12 @@ namespace SA46Team05BESNETProject
 
         private void BookButton_Click(object sender, EventArgs e)
         {
-            //check for empty fields
+            //check for empty fields and valid member entries
             bool fieldsEmpty = false;
+            bool correctMember = false;
+
+            List<Member>mCorrect = context.Members.Where(x => x.NRIC != String.Empty).ToList();
+
             foreach (Control g in this.Controls)
             {
                 if (g is GroupBox)
@@ -146,10 +150,18 @@ namespace SA46Team05BESNETProject
                 }
             }
 
+            foreach (Member m in mCorrect)
+            {
+                if(m.NRIC.ToString() == MemberFINTextBox.Text && m.MemberName.ToString() == MemberNameTextBox.Text)
+                {
+                    correctMember = true;
+                }
+            }
 
             //Add entry into Transactions Table if all fields are filled
-            if (!fieldsEmpty)
+            if (!fieldsEmpty && correctMember==true)
             {
+                //string to store the input
                 string bookingDetails = "";
                 //Get last Transaction ID
                 int lastID = int.Parse(context.Transactions.OrderByDescending(x => x.TransactionID).Select(y => y.TransactionID).First().ToString());
@@ -189,7 +201,10 @@ namespace SA46Team05BESNETProject
 
                 foreach (PropertyInfo propertyInfo in t.GetType().GetProperties())
                 {
-                    bookingDetails += propertyInfo.Name.ToString() + " : " + propertyInfo.GetValue(t, null) + Environment.NewLine;
+                    if(propertyInfo.Name.ToString()!= "Facility" && propertyInfo.Name.ToString() != "Member")
+                    {
+                        bookingDetails += propertyInfo.Name.ToString() + " : " + propertyInfo.GetValue(t, null) + Environment.NewLine;
+                    }
                 }
                 DialogResult dialogResult = MessageBox.Show(bookingDetails, "Confirm Booking", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -199,19 +214,19 @@ namespace SA46Team05BESNETProject
                     UpdateAvailabilityTable(t.FacilityID, t.Slot, 0);
 
                     //Save Changes in database
-                    //context.Transactions.Add(t)
-                    //context.SaveChanges();
-                }
-                else if (dialogResult == DialogResult.No)
-                {
-                    //do something else
+                    context.Transactions.Add(t);
+                    context.SaveChanges();
                 }
 
             }
-            else
+            else if(fieldsEmpty && correctMember == true)
             {
                 //If there are empty fields, remind user
                 MessageBox.Show("Please fill in all fields before booking");
+            }
+            else
+            {
+                MessageBox.Show("Please key in correct member details");
             }
 
 
