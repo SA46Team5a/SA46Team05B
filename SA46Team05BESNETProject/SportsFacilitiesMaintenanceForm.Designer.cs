@@ -41,7 +41,7 @@
             this.FacilitiesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.FacilitiesDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.FacilitiesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FacilitiesDataGridView.Location = new System.Drawing.Point(40, 61);
+            this.FacilitiesDataGridView.Location = new System.Drawing.Point(112, 123);
             this.FacilitiesDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.FacilitiesDataGridView.Name = "FacilitiesDataGridView";
             this.FacilitiesDataGridView.RowTemplate.Height = 28;
@@ -52,7 +52,7 @@
             // 
             this.DateLabel.AutoSize = true;
             this.DateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateLabel.Location = new System.Drawing.Point(166, 18);
+            this.DateLabel.Location = new System.Drawing.Point(238, 80);
             this.DateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DateLabel.Name = "DateLabel";
             this.DateLabel.Size = new System.Drawing.Size(30, 13);
@@ -61,7 +61,7 @@
             // 
             // UpdateAvailiabilityButton
             // 
-            this.UpdateAvailiabilityButton.Location = new System.Drawing.Point(364, 269);
+            this.UpdateAvailiabilityButton.Location = new System.Drawing.Point(436, 331);
             this.UpdateAvailiabilityButton.Margin = new System.Windows.Forms.Padding(2);
             this.UpdateAvailiabilityButton.Name = "UpdateAvailiabilityButton";
             this.UpdateAvailiabilityButton.Size = new System.Drawing.Size(74, 26);
@@ -72,7 +72,7 @@
             // 
             // DisplayFacilityButton
             // 
-            this.DisplayFacilityButton.Location = new System.Drawing.Point(80, 269);
+            this.DisplayFacilityButton.Location = new System.Drawing.Point(152, 331);
             this.DisplayFacilityButton.Margin = new System.Windows.Forms.Padding(2);
             this.DisplayFacilityButton.Name = "DisplayFacilityButton";
             this.DisplayFacilityButton.Size = new System.Drawing.Size(140, 26);
@@ -84,18 +84,18 @@
             // TomorrowDateLabel
             // 
             this.TomorrowDateLabel.AutoSize = true;
-            this.TomorrowDateLabel.Location = new System.Drawing.Point(252, 18);
+            this.TomorrowDateLabel.Location = new System.Drawing.Point(324, 80);
             this.TomorrowDateLabel.Name = "TomorrowDateLabel";
-            this.TomorrowDateLabel.Size = new System.Drawing.Size(87, 13);
+            this.TomorrowDateLabel.Size = new System.Drawing.Size(70, 13);
             this.TomorrowDateLabel.TabIndex = 11;
-            this.TomorrowDateLabel.Text = "Tomorrow\'s Date";
+            this.TomorrowDateLabel.Text = "Today\'s Date";
             // 
             // SportsFacilitiesMaintenanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(545, 376);
+            this.ClientSize = new System.Drawing.Size(716, 439);
             this.Controls.Add(this.TomorrowDateLabel);
             this.Controls.Add(this.DisplayFacilityButton);
             this.Controls.Add(this.UpdateAvailiabilityButton);

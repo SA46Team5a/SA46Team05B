@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace SA46Team05BESNETProject
 {
-    public partial class MemberMaintenanceForm : TemplateForm
+    public partial class MemberMaintenanceForm :Form
     {
         int posn = 0;
-        List<Member> Mlist;
+      
 
         public MemberMaintenanceForm()
         {

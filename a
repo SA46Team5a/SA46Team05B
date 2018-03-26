@@ -1,0 +1,29 @@
+[33mcommit 677848e2a44f61b479294d36ab6f12790e717dce[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Khim22 <khimyang22@gmail.com>
+Date:   Mon Mar 26 14:17:58 2018 +0800
+
+    Resolved the validation of Member Details in Booking Confirmation
+
+[33mcommit 6fc5b257ca9b8f59157c29c183a352ee9983d355[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Khim22 <khimyang22@gmail.com>
+Date:   Mon Mar 26 10:28:22 2018 +0800
+
+    Added try catch to CancelBookingForm, implemented clock in MemberMaintenanceForm
+
+[33mcommit 23fa7e20049e05f08b09be84fc516beff2c550b7[m
+Author: Khim22 <khimyang22@gmail.com>
+Date:   Mon Mar 26 10:01:05 2018 +0800
+
+    Integrated MemberMaintenanceForm, created Readme.txt
+
+[33mcommit 92b2c3ad9c213e269817635f5a738fbc31d8fd6e[m
+Author: Khim22 <khimyang22@gmail.com>
+Date:   Sun Mar 25 20:37:04 2018 +0800
+
+    Booking,CancelBooking,MemberQuery,Query,SportsFacilitiesMaintenanceForm integrated
+
+[33mcommit 177fa277d771bbf7d9f828922c07f20690f7c2dd[m
+Author: WANG LU <WANG LU@WANGLU>
+Date:   Thu Mar 22 16:37:51 2018 +0800
+
+    Add .gitignore and .gitattributes.

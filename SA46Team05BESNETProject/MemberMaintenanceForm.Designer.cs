@@ -58,7 +58,7 @@
             // 
             this.MemberNameLabel.AutoSize = true;
             this.MemberNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MemberNameLabel.Location = new System.Drawing.Point(110, 37);
+            this.MemberNameLabel.Location = new System.Drawing.Point(98, 49);
             this.MemberNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MemberNameLabel.Name = "MemberNameLabel";
             this.MemberNameLabel.Size = new System.Drawing.Size(76, 13);
@@ -69,7 +69,7 @@
             // 
             this.FINLabel.AutoSize = true;
             this.FINLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FINLabel.Location = new System.Drawing.Point(110, 89);
+            this.FINLabel.Location = new System.Drawing.Point(98, 89);
             this.FINLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FINLabel.Name = "FINLabel";
             this.FINLabel.Size = new System.Drawing.Size(55, 13);
@@ -80,7 +80,7 @@
             // 
             this.PhoneNumberLabel.AutoSize = true;
             this.PhoneNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhoneNumberLabel.Location = new System.Drawing.Point(108, 248);
+            this.PhoneNumberLabel.Location = new System.Drawing.Point(96, 219);
             this.PhoneNumberLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PhoneNumberLabel.Name = "PhoneNumberLabel";
             this.PhoneNumberLabel.Size = new System.Drawing.Size(78, 13);
@@ -91,7 +91,7 @@
             // 
             this.GenderLabel.AutoSize = true;
             this.GenderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GenderLabel.Location = new System.Drawing.Point(110, 148);
+            this.GenderLabel.Location = new System.Drawing.Point(98, 131);
             this.GenderLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.GenderLabel.Name = "GenderLabel";
             this.GenderLabel.Size = new System.Drawing.Size(42, 13);
@@ -102,7 +102,7 @@
             // 
             this.AgeLabel.AutoSize = true;
             this.AgeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AgeLabel.Location = new System.Drawing.Point(110, 195);
+            this.AgeLabel.Location = new System.Drawing.Point(98, 178);
             this.AgeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AgeLabel.Name = "AgeLabel";
             this.AgeLabel.Size = new System.Drawing.Size(26, 13);
@@ -111,7 +111,7 @@
             // 
             // MemberNameTextBox
             // 
-            this.MemberNameTextBox.Location = new System.Drawing.Point(256, 37);
+            this.MemberNameTextBox.Location = new System.Drawing.Point(244, 49);
             this.MemberNameTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MemberNameTextBox.Name = "MemberNameTextBox";
             this.MemberNameTextBox.Size = new System.Drawing.Size(212, 20);
@@ -119,7 +119,7 @@
             // 
             // NRICTextBox
             // 
-            this.NRICTextBox.Location = new System.Drawing.Point(256, 89);
+            this.NRICTextBox.Location = new System.Drawing.Point(244, 89);
             this.NRICTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NRICTextBox.Name = "NRICTextBox";
             this.NRICTextBox.Size = new System.Drawing.Size(182, 20);
@@ -127,7 +127,7 @@
             // 
             // PhoneNumberTextBox
             // 
-            this.PhoneNumberTextBox.Location = new System.Drawing.Point(254, 245);
+            this.PhoneNumberTextBox.Location = new System.Drawing.Point(242, 216);
             this.PhoneNumberTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
             this.PhoneNumberTextBox.Size = new System.Drawing.Size(182, 20);
@@ -135,7 +135,7 @@
             // 
             // AgeTextBox
             // 
-            this.AgeTextBox.Location = new System.Drawing.Point(256, 192);
+            this.AgeTextBox.Location = new System.Drawing.Point(244, 175);
             this.AgeTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AgeTextBox.Name = "AgeTextBox";
             this.AgeTextBox.Size = new System.Drawing.Size(101, 20);
@@ -147,7 +147,7 @@
             this.GenderComboBox.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.GenderComboBox.Location = new System.Drawing.Point(256, 145);
+            this.GenderComboBox.Location = new System.Drawing.Point(244, 128);
             this.GenderComboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.GenderComboBox.Name = "GenderComboBox";
             this.GenderComboBox.Size = new System.Drawing.Size(121, 21);
@@ -155,7 +155,7 @@
             // 
             // PreviousButton
             // 
-            this.PreviousButton.Location = new System.Drawing.Point(112, 313);
+            this.PreviousButton.Location = new System.Drawing.Point(70, 262);
             this.PreviousButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PreviousButton.Name = "PreviousButton";
             this.PreviousButton.Size = new System.Drawing.Size(47, 35);
@@ -166,7 +166,7 @@
             // 
             // UpdateButton
             // 
-            this.UpdateButton.Location = new System.Drawing.Point(232, 313);
+            this.UpdateButton.Location = new System.Drawing.Point(190, 262);
             this.UpdateButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(79, 35);
@@ -177,7 +177,7 @@
             // 
             // InsertButton
             // 
-            this.InsertButton.Location = new System.Drawing.Point(360, 313);
+            this.InsertButton.Location = new System.Drawing.Point(318, 262);
             this.InsertButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.InsertButton.Name = "InsertButton";
             this.InsertButton.Size = new System.Drawing.Size(77, 35);
@@ -188,7 +188,7 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(497, 313);
+            this.DeleteButton.Location = new System.Drawing.Point(455, 262);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(74, 35);
@@ -199,7 +199,7 @@
             // 
             // NextButton
             // 
-            this.NextButton.Location = new System.Drawing.Point(644, 313);
+            this.NextButton.Location = new System.Drawing.Point(584, 262);
             this.NextButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.NextButton.Name = "NextButton";
             this.NextButton.Size = new System.Drawing.Size(47, 35);
@@ -210,7 +210,7 @@
             // 
             // FirstButton
             // 
-            this.FirstButton.Location = new System.Drawing.Point(112, 375);
+            this.FirstButton.Location = new System.Drawing.Point(70, 324);
             this.FirstButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FirstButton.Name = "FirstButton";
             this.FirstButton.Size = new System.Drawing.Size(47, 36);
@@ -233,7 +233,7 @@
             // 
             // LastButton
             // 
-            this.LastButton.Location = new System.Drawing.Point(644, 375);
+            this.LastButton.Location = new System.Drawing.Point(584, 324);
             this.LastButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LastButton.Name = "LastButton";
             this.LastButton.Size = new System.Drawing.Size(47, 36);
@@ -256,7 +256,7 @@
             this.SearchGroupBox.Controls.Add(this.SearchTextBox);
             this.SearchGroupBox.Controls.Add(this.SearchButton);
             this.SearchGroupBox.Font = new System.Drawing.Font("Segoe Print", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchGroupBox.Location = new System.Drawing.Point(232, 355);
+            this.SearchGroupBox.Location = new System.Drawing.Point(190, 304);
             this.SearchGroupBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SearchGroupBox.Name = "SearchGroupBox";
             this.SearchGroupBox.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -268,7 +268,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-3, 24);
+            this.label1.Location = new System.Drawing.Point(501, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 21;
@@ -280,7 +280,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(800, 449);
+            this.ClientSize = new System.Drawing.Size(716, 439);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SearchGroupBox);
             this.Controls.Add(this.LastButton);
@@ -305,25 +305,6 @@
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "MemberMaintenanceForm";
             this.Text = "Member Maintenance Form";
-            this.Controls.SetChildIndex(this.MemberNameLabel, 0);
-            this.Controls.SetChildIndex(this.FINLabel, 0);
-            this.Controls.SetChildIndex(this.PhoneNumberLabel, 0);
-            this.Controls.SetChildIndex(this.GenderLabel, 0);
-            this.Controls.SetChildIndex(this.AgeLabel, 0);
-            this.Controls.SetChildIndex(this.MemberNameTextBox, 0);
-            this.Controls.SetChildIndex(this.NRICTextBox, 0);
-            this.Controls.SetChildIndex(this.PhoneNumberTextBox, 0);
-            this.Controls.SetChildIndex(this.AgeTextBox, 0);
-            this.Controls.SetChildIndex(this.GenderComboBox, 0);
-            this.Controls.SetChildIndex(this.PreviousButton, 0);
-            this.Controls.SetChildIndex(this.UpdateButton, 0);
-            this.Controls.SetChildIndex(this.InsertButton, 0);
-            this.Controls.SetChildIndex(this.DeleteButton, 0);
-            this.Controls.SetChildIndex(this.NextButton, 0);
-            this.Controls.SetChildIndex(this.FirstButton, 0);
-            this.Controls.SetChildIndex(this.LastButton, 0);
-            this.Controls.SetChildIndex(this.SearchGroupBox, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
             this.SearchGroupBox.ResumeLayout(false);
             this.SearchGroupBox.PerformLayout();
             this.ResumeLayout(false);

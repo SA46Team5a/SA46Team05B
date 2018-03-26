@@ -94,7 +94,7 @@ namespace SA46Team05BESNETProject
                     "FacilityID = 'BB-1'  or FacilityID = 'BB-2'  or FacilityID = 'BB-3'  or FacilityID = 'BB-4' or FacilityID = 'TT-1'  or FacilityID = 'TT-2'" +
                     "  or FacilityID = 'TT-3'  or FacilityID = 'TT-4' or FacilityID = 'B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
                 con = new SqlConnection();
-                con.ConnectionString = @"data source=(local); initial catalog=SA46Team05B ESNET Project;integrated security=SSPI";
+                con.ConnectionString = @"data source=(local); initial catalog=SA46Team05BESNETProject;integrated security=SSPI";
                 cm = new SqlCommand();
                 if (ActivityComboBox.Text.Trim() == "Tennis" && TimeSlotComboBox.Text.Trim() == "")
                 {
@@ -320,7 +320,7 @@ namespace SA46Team05BESNETProject
         private void displayTableButton_Click(object sender, EventArgs e)
         {
             con = new SqlConnection();
-            con.ConnectionString = @"data source=(local); initial catalog=SA46Team05B ESNET Project;integrated security=SSPI";
+            con.ConnectionString = @"data source=(local); initial catalog=SA46Team05BESNETProject;integrated security=SSPI";
             cm = new SqlCommand();
             cm.CommandText = "select * from Availabilities";
             cm.Connection = con;
@@ -334,18 +334,7 @@ namespace SA46Team05BESNETProject
 
         private void QueryForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control == true && e.KeyCode == Keys.S)
-            {
-                SearchButton.PerformClick();
-            }
-            if (e.Control == true && e.KeyCode == Keys.U)
-            {
-                updateButton.PerformClick();
-            }
-            if (e.Control == true && e.KeyCode == Keys.D)
-            {
-                displayTableButton.PerformClick();
-            }
+
         }
 
 

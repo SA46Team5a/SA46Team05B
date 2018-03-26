@@ -31,29 +31,16 @@ SA46Team05B ESNTET Project.bak
 
 
 
-----------------------------
+
 Features of Team05B Project
 ----------------------------
 
-Assumptions:
-----------------
+Assumptions made:
 
 1. There are four activities which members of the Sports Facility can participate in:
 	-Table Tennis
 	-Tennis
 	-Badminton
 	-Basketball
-2. There are four courts available for booking per activity
-3. Each court has a unique identifier FacilityID that represents the activity and the court number
-	E.g. TT-1 represents Table Tennis Court 1
-4. There are 20 members in the Sports Facility in the current state
+
 x. Staff can only book facilities for the next day
-
-
-Database:
-----------
-1. The database of the Sports Facility is built using RDBMS MSSQL
-2. The database consists of four tables of:
-	- Members
-	- Transaction
-	- Availability

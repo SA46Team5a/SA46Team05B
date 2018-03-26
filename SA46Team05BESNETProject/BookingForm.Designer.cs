@@ -59,7 +59,7 @@
             this.MemberDetailsGroupBox.Controls.Add(this.MemberNameTextBox);
             this.MemberDetailsGroupBox.Controls.Add(this.MemberFINLabel);
             this.MemberDetailsGroupBox.Controls.Add(this.MemberNameLabel);
-            this.MemberDetailsGroupBox.Location = new System.Drawing.Point(33, 18);
+            this.MemberDetailsGroupBox.Location = new System.Drawing.Point(100, 25);
             this.MemberDetailsGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.MemberDetailsGroupBox.Name = "MemberDetailsGroupBox";
             this.MemberDetailsGroupBox.Padding = new System.Windows.Forms.Padding(2);
@@ -123,7 +123,7 @@
             this.FacilitiesGroupBox.Controls.Add(this.ActivityNameComboBox);
             this.FacilitiesGroupBox.Controls.Add(this.FacilityIDLabel);
             this.FacilitiesGroupBox.Controls.Add(this.FacilityNameLabel);
-            this.FacilitiesGroupBox.Location = new System.Drawing.Point(33, 110);
+            this.FacilitiesGroupBox.Location = new System.Drawing.Point(100, 117);
             this.FacilitiesGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.FacilitiesGroupBox.Name = "FacilitiesGroupBox";
             this.FacilitiesGroupBox.Padding = new System.Windows.Forms.Padding(2);
@@ -183,7 +183,7 @@
             this.BookingDetailsGroupBox.Controls.Add(this.TimeSlotComboBox);
             this.BookingDetailsGroupBox.Controls.Add(this.TimeSlotLabel);
             this.BookingDetailsGroupBox.Controls.Add(this.DateLabel);
-            this.BookingDetailsGroupBox.Location = new System.Drawing.Point(33, 212);
+            this.BookingDetailsGroupBox.Location = new System.Drawing.Point(100, 219);
             this.BookingDetailsGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.BookingDetailsGroupBox.Name = "BookingDetailsGroupBox";
             this.BookingDetailsGroupBox.Padding = new System.Windows.Forms.Padding(2);
@@ -243,7 +243,7 @@
             // 
             // ClearFormButton
             // 
-            this.ClearFormButton.Location = new System.Drawing.Point(33, 311);
+            this.ClearFormButton.Location = new System.Drawing.Point(100, 318);
             this.ClearFormButton.Margin = new System.Windows.Forms.Padding(2);
             this.ClearFormButton.Name = "ClearFormButton";
             this.ClearFormButton.Size = new System.Drawing.Size(81, 36);
@@ -254,7 +254,7 @@
             // 
             // EditBookingButton
             // 
-            this.EditBookingButton.Location = new System.Drawing.Point(232, 311);
+            this.EditBookingButton.Location = new System.Drawing.Point(299, 318);
             this.EditBookingButton.Margin = new System.Windows.Forms.Padding(2);
             this.EditBookingButton.Name = "EditBookingButton";
             this.EditBookingButton.Size = new System.Drawing.Size(81, 36);
@@ -265,7 +265,7 @@
             // 
             // BookButton
             // 
-            this.BookButton.Location = new System.Drawing.Point(429, 311);
+            this.BookButton.Location = new System.Drawing.Point(496, 318);
             this.BookButton.Margin = new System.Windows.Forms.Padding(2);
             this.BookButton.Name = "BookButton";
             this.BookButton.Size = new System.Drawing.Size(81, 36);
@@ -279,7 +279,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(559, 367);
+            this.ClientSize = new System.Drawing.Size(716, 392);
             this.Controls.Add(this.BookButton);
             this.Controls.Add(this.EditBookingButton);
             this.Controls.Add(this.ClearFormButton);

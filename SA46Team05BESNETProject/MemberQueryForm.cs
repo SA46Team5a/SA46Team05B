@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SA46Team05BESNETProject
 {
-    public partial class MemberQueryForm : TemplateForm
+    public partial class MemberQueryForm : Form
     {
         SA46Team05BESNETProjectEntities context = new SA46Team05BESNETProjectEntities();
         BindingList<Member> MemberList = new BindingList<Member>();

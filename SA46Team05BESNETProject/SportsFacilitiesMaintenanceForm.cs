@@ -26,8 +26,8 @@ namespace SA46Team05BESNETProject
         private void SportsFacilitiesMaintenanceForm_Load(object sender, EventArgs e)
         {
             var today = DateTime.Now;
-            var tomorrow = today.AddDays(+1);
-            TomorrowDateLabel.Text = tomorrow.ToString();
+            
+            TomorrowDateLabel.Text =today .ToString("dd/MM/yyyy");
             this.KeyPreview = true;
         }
         private void SportsFacilitiesMaintenanceForm_KeyDown(object sender, KeyEventArgs e)
@@ -46,7 +46,7 @@ namespace SA46Team05BESNETProject
         {
             string updateFacility = "select * from Facilities";
             con = new SqlConnection();
-            con.ConnectionString = @"data source=(local); initial catalog=SA46Team05B ESNET Project;integrated security=SSPI";
+            con.ConnectionString = @"data source=(local); initial catalog=SA46Team05BESNETProject;integrated security=SSPI";
             cm = new SqlCommand();
             cm.CommandText = updateFacility;
             cm.Connection = con;
@@ -59,8 +59,15 @@ namespace SA46Team05BESNETProject
 
         private void UpdateAvailiabilityButton_Click_1(object sender, EventArgs e)
         {
-            cmb = new SqlCommandBuilder(adap);
-            adap.Update(ds, "1");
+            try
+            {
+                cmb = new SqlCommandBuilder(adap);
+                adap.Update(ds, "1");
+            }
+            catch
+            {
+                MessageBox.Show("Please search the facility table before click update");
+            }
         }
     }
 }

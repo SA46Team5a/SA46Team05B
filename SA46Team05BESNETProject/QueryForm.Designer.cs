@@ -49,8 +49,8 @@
             this.SearchByGroupBox.Controls.Add(this.ActivityComboBox);
             this.SearchByGroupBox.Controls.Add(this.TimeSlotLabel);
             this.SearchByGroupBox.Controls.Add(this.ActivityLabel);
-            this.SearchByGroupBox.Font = new System.Drawing.Font("Segoe Print", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchByGroupBox.Location = new System.Drawing.Point(59, 24);
+            this.SearchByGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchByGroupBox.Location = new System.Drawing.Point(133, 37);
             this.SearchByGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.SearchByGroupBox.Name = "SearchByGroupBox";
             this.SearchByGroupBox.Padding = new System.Windows.Forms.Padding(2);
@@ -67,7 +67,7 @@
             this.displayTableButton.Name = "displayTableButton";
             this.displayTableButton.Size = new System.Drawing.Size(81, 28);
             this.displayTableButton.TabIndex = 6;
-            this.displayTableButton.Text = "&Display Table";
+            this.displayTableButton.Text = "Display Table";
             this.displayTableButton.UseVisualStyleBackColor = true;
             this.displayTableButton.Click += new System.EventHandler(this.displayTableButton_Click);
             // 
@@ -87,7 +87,7 @@
             "16:00-17:00"});
             this.TimeSlotComboBox.Location = new System.Drawing.Point(135, 55);
             this.TimeSlotComboBox.Name = "TimeSlotComboBox";
-            this.TimeSlotComboBox.Size = new System.Drawing.Size(148, 27);
+            this.TimeSlotComboBox.Size = new System.Drawing.Size(148, 21);
             this.TimeSlotComboBox.TabIndex = 5;
             // 
             // SearchButton
@@ -98,7 +98,7 @@
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(81, 28);
             this.SearchButton.TabIndex = 4;
-            this.SearchButton.Text = "&Search";
+            this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
@@ -115,7 +115,7 @@
             this.ActivityComboBox.Location = new System.Drawing.Point(135, 22);
             this.ActivityComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.ActivityComboBox.Name = "ActivityComboBox";
-            this.ActivityComboBox.Size = new System.Drawing.Size(148, 27);
+            this.ActivityComboBox.Size = new System.Drawing.Size(148, 21);
             this.ActivityComboBox.TabIndex = 2;
             // 
             // TimeSlotLabel
@@ -145,7 +145,7 @@
             this.FacilitiesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.FacilitiesDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.FacilitiesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FacilitiesDataGridView.Location = new System.Drawing.Point(59, 164);
+            this.FacilitiesDataGridView.Location = new System.Drawing.Point(133, 177);
             this.FacilitiesDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.FacilitiesDataGridView.Name = "FacilitiesDataGridView";
             this.FacilitiesDataGridView.RowTemplate.Height = 28;
@@ -154,11 +154,11 @@
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(225, 333);
+            this.updateButton.Location = new System.Drawing.Point(299, 346);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 2;
-            this.updateButton.Text = "&Update";
+            this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
@@ -167,14 +167,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(548, 378);
+            this.ClientSize = new System.Drawing.Size(716, 439);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.FacilitiesDataGridView);
             this.Controls.Add(this.SearchByGroupBox);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "QueryForm";
             this.Text = "QueryForm";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QueryForm_KeyDown);
             this.SearchByGroupBox.ResumeLayout(false);
             this.SearchByGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FacilitiesDataGridView)).EndInit();

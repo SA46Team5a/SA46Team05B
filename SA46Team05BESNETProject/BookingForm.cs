@@ -50,7 +50,6 @@ namespace SA46Team05BESNETProject
         {
             InitializeComponent();
             TomorrowDateLabel.Text = DateTime.Today.AddDays(1).ToString("dd-MM-yyyy");
-
         }
 
         private void MemberNameTextBox_TextChanged(object sender, EventArgs e)
@@ -133,8 +132,9 @@ namespace SA46Team05BESNETProject
             //check for empty fields and valid member entries
             bool fieldsEmpty = false;
             bool correctMember = false;
+            int availabilityofFacility = 0;
 
-            List<Member>mCorrect = context.Members.Where(x => x.NRIC != String.Empty).ToList();
+            List<Member> mCorrect = context.Members.Where(x => x.NRIC != String.Empty).ToList();
 
             foreach (Control g in this.Controls)
             {
@@ -152,15 +152,16 @@ namespace SA46Team05BESNETProject
 
             foreach (Member m in mCorrect)
             {
-                if(m.NRIC.ToString() == MemberFINTextBox.Text && m.MemberName.ToString() == MemberNameTextBox.Text)
+                if (m.NRIC.ToString() == MemberFINTextBox.Text && m.MemberName.ToString() == MemberNameTextBox.Text)
                 {
                     correctMember = true;
                 }
             }
 
             //Add entry into Transactions Table if all fields are filled
-            if (!fieldsEmpty && correctMember==true)
+            if (!fieldsEmpty && correctMember == true)
             {
+
                 //string to store the input
                 string bookingDetails = "";
                 //Get last Transaction ID
@@ -178,48 +179,56 @@ namespace SA46Team05BESNETProject
                 Facility f = context.Facilities.Where(x => x.FacilityID == t.FacilityID).FirstOrDefault();
                 t.Price = f.Price;
 
-                //Get SlotNumber from the selected time option in combobox
-                switch (TimeSlotComboBox.Text)
-                {
-                    case "09:00-10:00":
-                        t.Slot = "Slot1"; break;
-                    case "10:00-11:00":
-                        t.Slot = "Slot2"; break;
-                    case "11:00-12:00":
-                        t.Slot = "Slot3"; break;
-                    case "12:00-13:00":
-                        t.Slot = "Slot4"; break;
-                    case "13:00-14:00":
-                        t.Slot = "Slot5"; break;
-                    case "14:00-15:00":
-                        t.Slot = "Slot6"; break;
-                    case "15:00-16:00":
-                        t.Slot = "Slot7"; break;
-                    case "16:00-17:00":
-                        t.Slot = "Slot8"; break;
-                }
+                availabilityofFacility = CheckAvailabilityTable(t.FacilityID, t.Slot);
 
-                foreach (PropertyInfo propertyInfo in t.GetType().GetProperties())
+                if(availabilityofFacility == 1)
                 {
-                    if(propertyInfo.Name.ToString()!= "Facility" && propertyInfo.Name.ToString() != "Member")
+                    //Get SlotNumber from the selected time option in combobox
+                    switch (TimeSlotComboBox.Text)
                     {
-                        bookingDetails += propertyInfo.Name.ToString() + " : " + propertyInfo.GetValue(t, null) + Environment.NewLine;
+                        case "09:00-10:00":
+                            t.Slot = "Slot1"; break;
+                        case "10:00-11:00":
+                            t.Slot = "Slot2"; break;
+                        case "11:00-12:00":
+                            t.Slot = "Slot3"; break;
+                        case "12:00-13:00":
+                            t.Slot = "Slot4"; break;
+                        case "13:00-14:00":
+                            t.Slot = "Slot5"; break;
+                        case "14:00-15:00":
+                            t.Slot = "Slot6"; break;
+                        case "15:00-16:00":
+                            t.Slot = "Slot7"; break;
+                        case "16:00-17:00":
+                            t.Slot = "Slot8"; break;
+                    }
+
+                    foreach (PropertyInfo propertyInfo in t.GetType().GetProperties())
+                    {
+                        if (propertyInfo.Name.ToString() != "Facility" && propertyInfo.Name.ToString() != "Member")
+                        {
+                            bookingDetails += propertyInfo.Name.ToString() + " : " + propertyInfo.GetValue(t, null) + Environment.NewLine;
+                        }
+                    }
+                    DialogResult dialogResult = MessageBox.Show(bookingDetails, "Confirm Booking", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        //Update Availability Table---Availability = 1 is place is available
+
+                        UpdateAvailabilityTable(t.FacilityID, t.Slot, 0);
+
+                        //Save Changes in database
+                        context.Transactions.Add(t);
+                        context.SaveChanges();
                     }
                 }
-                DialogResult dialogResult = MessageBox.Show(bookingDetails, "Confirm Booking", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+                else
                 {
-                    //Update Availability Table---Availability = 1 is place is available
-
-                    UpdateAvailabilityTable(t.FacilityID, t.Slot, 0);
-
-                    //Save Changes in database
-                    context.Transactions.Add(t);
-                    context.SaveChanges();
+                    MessageBox.Show("Slot not available!");
                 }
-
             }
-            else if(fieldsEmpty && correctMember == true)
+            else if (fieldsEmpty && correctMember == true)
             {
                 //If there are empty fields, remind user
                 MessageBox.Show("Please fill in all fields before booking");
@@ -255,6 +264,36 @@ namespace SA46Team05BESNETProject
                 case "Slot8":
                     a.Slot8 = availability; break;
             }
+        }
+
+        private int CheckAvailabilityTable(string FacilityID, string Slot)
+        {
+            int availability;
+            Availability a = context.Availabilities.Where(x => x.FacilityID == FacilityID).FirstOrDefault();
+
+            switch (Slot)
+            {
+                case "Slot1":
+                    availability = Convert.ToInt32(a.Slot1); break;
+                case "Slot2":
+                    availability = Convert.ToInt32(a.Slot2); break;
+                case "Slot3":
+                    availability = Convert.ToInt32(a.Slot3); break;
+                case "Slot4":
+                    availability = Convert.ToInt32(a.Slot4); break;
+                case "Slot5":
+                    availability = Convert.ToInt32(a.Slot5); break;
+                case "Slot6":
+                    availability = Convert.ToInt32(a.Slot6); break;
+                case "Slot7":
+                    availability = Convert.ToInt32(a.Slot7); break;
+                case "Slot8":
+                    availability = Convert.ToInt32(a.Slot8); break;
+                default:
+                    availability = 0; break;
+            }
+
+            return availability;
         }
 
 

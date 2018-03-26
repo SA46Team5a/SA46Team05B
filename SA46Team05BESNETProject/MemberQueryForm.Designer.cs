@@ -38,6 +38,8 @@
             // 
             // MemberQueryDataGridView
             // 
+            this.MemberQueryDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.MemberQueryDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.MemberQueryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MemberQueryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MemberName,
@@ -89,7 +91,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 367);
+            this.ClientSize = new System.Drawing.Size(559, 367);
             this.Controls.Add(this.SelectMemberButton);
             this.Controls.Add(this.MemberQueryDataGridView);
             this.Name = "MemberQueryForm";
