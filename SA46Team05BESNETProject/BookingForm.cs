@@ -124,12 +124,8 @@ namespace SA46Team05BESNETProject
             memberQueryForm = new MemberQueryForm(this);
             memberQueryForm.ShowDialog();
             MemberNameTextBox.Text = this.NAME;
- 
-            //MemberNameTextBox.Text = this.NAME;
-            //MemberFINTextBox.Text = this.NRIC;
 
         }
-
 
 
         private void BookButton_Click(object sender, EventArgs e)
@@ -191,19 +187,26 @@ namespace SA46Team05BESNETProject
                         t.Slot = "Slot8"; break;
                 }
 
-                //foreach (PropertyInfo propertyInfo in t.GetType().GetProperties())
-                //{
-                //    bookingDetails += propertyInfo.GetValue()+ Environment.NewLine;
-                //}
+                foreach (PropertyInfo propertyInfo in t.GetType().GetProperties())
+                {
+                    bookingDetails += propertyInfo.Name.ToString() + " : " + propertyInfo.GetValue(t, null) + Environment.NewLine;
+                }
+                DialogResult dialogResult = MessageBox.Show(bookingDetails, "Confirm Booking", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //Update Availability Table---Availability = 1 is place is available
 
-                MessageBox.Show(bookingDetails);
-                //Update Availability Table---Availability = 1 is place is available
+                    UpdateAvailabilityTable(t.FacilityID, t.Slot, 0);
 
-                UpdateAvailabilityTable(t.FacilityID, t.Slot, 0);
+                    //Save Changes in database
+                    //context.Transactions.Add(t)
+                    //context.SaveChanges();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
 
-                //Save Changes in database
-                //context.Transactions.Add(t)
-                //context.SaveChanges();
             }
             else
             {

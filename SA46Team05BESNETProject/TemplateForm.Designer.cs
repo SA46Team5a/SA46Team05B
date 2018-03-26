@@ -163,7 +163,7 @@
         private System.Windows.Forms.ToolStripMenuItem bookSportsFacilitiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cancelSportsFacilitiesBookingToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
         private System.Windows.Forms.Label logoLabel;
+        protected System.Windows.Forms.ToolStripStatusLabel StatusLabel;
     }
 }
