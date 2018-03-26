@@ -123,7 +123,8 @@
             // logoLabel
             // 
             this.logoLabel.AutoSize = true;
-            this.logoLabel.Location = new System.Drawing.Point(453, 24);
+            this.logoLabel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.logoLabel.Location = new System.Drawing.Point(465, 24);
             this.logoLabel.Name = "logoLabel";
             this.logoLabel.Size = new System.Drawing.Size(159, 13);
             this.logoLabel.TabIndex = 2;

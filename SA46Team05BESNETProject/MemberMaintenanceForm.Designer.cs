@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.MemberNameLabel = new System.Windows.Forms.Label();
             this.FINLabel = new System.Windows.Forms.Label();
             this.PhoneNumberLabel = new System.Windows.Forms.Label();
@@ -36,7 +37,7 @@
             this.MemberNameTextBox = new System.Windows.Forms.TextBox();
             this.NRICTextBox = new System.Windows.Forms.TextBox();
             this.PhoneNumberTextBox = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.AgeTextBox = new System.Windows.Forms.TextBox();
             this.GenderComboBox = new System.Windows.Forms.ComboBox();
             this.PreviousButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
@@ -48,6 +49,8 @@
             this.LastButton = new System.Windows.Forms.Button();
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.SearchGroupBox = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SearchGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,13 +133,13 @@
             this.PhoneNumberTextBox.Size = new System.Drawing.Size(182, 20);
             this.PhoneNumberTextBox.TabIndex = 7;
             // 
-            // textBox5
+            // AgeTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(256, 192);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(101, 20);
-            this.textBox5.TabIndex = 9;
+            this.AgeTextBox.Location = new System.Drawing.Point(256, 192);
+            this.AgeTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AgeTextBox.Name = "AgeTextBox";
+            this.AgeTextBox.Size = new System.Drawing.Size(101, 20);
+            this.AgeTextBox.TabIndex = 9;
             // 
             // GenderComboBox
             // 
@@ -159,6 +162,7 @@
             this.PreviousButton.TabIndex = 11;
             this.PreviousButton.Text = "<";
             this.PreviousButton.UseVisualStyleBackColor = true;
+            this.PreviousButton.Click += new System.EventHandler(this.PreviousButton_Click_1);
             // 
             // UpdateButton
             // 
@@ -169,6 +173,7 @@
             this.UpdateButton.TabIndex = 12;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // InsertButton
             // 
@@ -179,6 +184,7 @@
             this.InsertButton.TabIndex = 13;
             this.InsertButton.Text = "Insert";
             this.InsertButton.UseVisualStyleBackColor = true;
+            this.InsertButton.Click += new System.EventHandler(this.InsertButton_Click);
             // 
             // DeleteButton
             // 
@@ -189,6 +195,7 @@
             this.DeleteButton.TabIndex = 14;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // NextButton
             // 
@@ -199,6 +206,7 @@
             this.NextButton.TabIndex = 15;
             this.NextButton.Text = ">";
             this.NextButton.UseVisualStyleBackColor = true;
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // FirstButton
             // 
@@ -209,6 +217,7 @@
             this.FirstButton.TabIndex = 16;
             this.FirstButton.Text = "<<";
             this.FirstButton.UseVisualStyleBackColor = true;
+            this.FirstButton.Click += new System.EventHandler(this.FirstButton_Click);
             // 
             // SearchButton
             // 
@@ -220,6 +229,7 @@
             this.SearchButton.TabIndex = 17;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // LastButton
             // 
@@ -230,6 +240,7 @@
             this.LastButton.TabIndex = 18;
             this.LastButton.Text = ">>";
             this.LastButton.UseVisualStyleBackColor = true;
+            this.LastButton.Click += new System.EventHandler(this.LastButton_Click);
             // 
             // SearchTextBox
             // 
@@ -254,12 +265,23 @@
             this.SearchGroupBox.TabStop = false;
             this.SearchGroupBox.Text = "Search by NRIC/FIN";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(-3, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "label1";
+            this.label1.Move += new System.EventHandler(this.timer1_Tick);
+            // 
             // MemberMaintenanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 449);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.SearchGroupBox);
             this.Controls.Add(this.LastButton);
             this.Controls.Add(this.FirstButton);
@@ -269,7 +291,7 @@
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.PreviousButton);
             this.Controls.Add(this.GenderComboBox);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.AgeTextBox);
             this.Controls.Add(this.PhoneNumberTextBox);
             this.Controls.Add(this.NRICTextBox);
             this.Controls.Add(this.MemberNameTextBox);
@@ -283,6 +305,25 @@
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "MemberMaintenanceForm";
             this.Text = "Member Maintenance Form";
+            this.Controls.SetChildIndex(this.MemberNameLabel, 0);
+            this.Controls.SetChildIndex(this.FINLabel, 0);
+            this.Controls.SetChildIndex(this.PhoneNumberLabel, 0);
+            this.Controls.SetChildIndex(this.GenderLabel, 0);
+            this.Controls.SetChildIndex(this.AgeLabel, 0);
+            this.Controls.SetChildIndex(this.MemberNameTextBox, 0);
+            this.Controls.SetChildIndex(this.NRICTextBox, 0);
+            this.Controls.SetChildIndex(this.PhoneNumberTextBox, 0);
+            this.Controls.SetChildIndex(this.AgeTextBox, 0);
+            this.Controls.SetChildIndex(this.GenderComboBox, 0);
+            this.Controls.SetChildIndex(this.PreviousButton, 0);
+            this.Controls.SetChildIndex(this.UpdateButton, 0);
+            this.Controls.SetChildIndex(this.InsertButton, 0);
+            this.Controls.SetChildIndex(this.DeleteButton, 0);
+            this.Controls.SetChildIndex(this.NextButton, 0);
+            this.Controls.SetChildIndex(this.FirstButton, 0);
+            this.Controls.SetChildIndex(this.LastButton, 0);
+            this.Controls.SetChildIndex(this.SearchGroupBox, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
             this.SearchGroupBox.ResumeLayout(false);
             this.SearchGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -300,7 +341,7 @@
         private System.Windows.Forms.TextBox MemberNameTextBox;
         private System.Windows.Forms.TextBox NRICTextBox;
         private System.Windows.Forms.TextBox PhoneNumberTextBox;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox AgeTextBox;
         private System.Windows.Forms.ComboBox GenderComboBox;
         private System.Windows.Forms.Button PreviousButton;
         private System.Windows.Forms.Button UpdateButton;
@@ -312,6 +353,8 @@
         private System.Windows.Forms.Button LastButton;
         private System.Windows.Forms.TextBox SearchTextBox;
         private System.Windows.Forms.GroupBox SearchGroupBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
