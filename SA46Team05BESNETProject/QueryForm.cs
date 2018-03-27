@@ -26,283 +26,92 @@ namespace SA46Team05BESNETProject
         System.Data.DataSet ds;
         SqlCommandBuilder cmb;
         SqlCommand cm;
-
+        private string Query(string activity, string slot)
+        {
+            string Query = "select FacilityID " + slot + " from Availabilities where " + activity;
+            return Query;
+        }
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            try
+            string activity = "";
+            string slot = "";
+            string tennis = " FacilityID= 'T-1' or FacilityID ='T-2' or FacilityID ='T-3' or FacilityID ='T-4'";
+            string tableTennis = "FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
+            string badminton = "FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
+            string basketBall = "FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
+            string allActivity = "FacilityID= 'T-1' or FacilityID ='T-2' or FacilityID ='T-3' or FacilityID ='T-4' or" +
+                " FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'" + " or FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'"
+                + "or  FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
+
+            if (ActivityComboBox.Text == "Tennis")
             {
-                string onlyTennis = " select *  from Availabilities where FacilityID = 'T-1'or FacilityID = 'T-2'or FacilityID = 'T-3'or FacilityID = 'T-4'";
-                string onlyTableTennis = " select *  from Availabilities where FacilityID = 'TT-1'or FacilityID = 'TT-2'or FacilityID = 'TT-3'or FacilityID = 'TT-4'";
-                string onlyBadminton = " select *  from Availabilities where FacilityID = 'B-1'or FacilityID = 'B-2'or FacilityID = 'B-3'or FacilityID = 'B-4'";
-                string onlyBasketBall = " select *  from Availabilities where FacilityID = 'BB-1'or FacilityID = 'BB-2'or FacilityID = 'BB-3'or FacilityID = 'BB-4'";
-
-
-                string tennisSlot1 = " select FacilityID,Slot1 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
-                string tennisSlot2 = " select FacilityID,Slot2 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
-                string tennisSlot3 = " select FacilityID,Slot3 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
-                string tennisSlot4 = " select FacilityID,Slot4 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
-                string tennisSlot5 = " select FacilityID,Slot5 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
-                string tennisSlot6 = " select FacilityID,Slot6 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
-                string tennisSlot7 = " select FacilityID,Slot7 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
-                string tennisSlot8 = " select FacilityID,Slot8 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
-
-                string tableTennisSlot1 = " select FacilityID,Slot1 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
-                string tableTennisSlot2 = " select FacilityID,Slot2 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
-                string tableTennisSlot3 = " select FacilityID,Slot3 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
-                string tableTennisSlot4 = " select FacilityID,Slot4 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
-                string tableTennisSlot5 = " select FacilityID,Slot5 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
-                string tableTennisSlot6 = " select FacilityID,Slot6 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
-                string tableTennisSlot7 = " select FacilityID,Slot7 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
-                string tableTennisSlot8 = " select FacilityID,Slot8 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
-
-                string badmintonSlot1 = " select FacilityID,Slot1 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string badmintonSlot2 = " select FacilityID,Slot2 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string badmintonSlot3 = " select FacilityID,Slot3 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string badmintonSlot4 = " select FacilityID,Slot4 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string badmintonSlot5 = " select FacilityID,Slot5 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string badmintonSlot6 = " select FacilityID,Slot6 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string badmintonSlot7 = " select FacilityID,Slot7 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string badmintonSlot8 = " select FacilityID,Slot8 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-
-                string basketBallSlot1 = " select FacilityID,Slot1 from Availabilities where FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
-                string basketBallSlot2 = " select FacilityID,Slot2 from Availabilities where FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
-                string basketBallSlot3 = " select FacilityID,Slot3 from Availabilities where FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
-                string basketBallSlot4 = " select FacilityID,Slot4 from Availabilities where FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
-                string basketBallSlot5 = " select FacilityID,Slot5 from Availabilities where FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
-                string basketBallSlot6 = " select FacilityID,Slot6 from Availabilities where FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
-                string basketBallSlot7 = " select FacilityID,Slot7 from Availabilities where FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
-                string basketBallSlot8 = " select FacilityID,Slot8 from Availabilities where FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
-
-
-                string onlySlot1 = " select FacilityID,Slot1 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' or " +
-                    "FacilityID = 'BB-1'  or FacilityID = 'BB-2'  or FacilityID = 'BB-3'  or FacilityID = 'BB-4' or FacilityID = 'TT-1'  or FacilityID = 'TT-2'" +
-                    "  or FacilityID = 'TT-3'  or FacilityID = 'TT-4' or FacilityID = 'B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string onlySlot2 = " select FacilityID,Slot2 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' or " +
-                                "FacilityID = 'BB-1'  or FacilityID = 'BB-2'  or FacilityID = 'BB-3'  or FacilityID = 'BB-4' or FacilityID = 'TT-1'  or FacilityID = 'TT-2'" +
-                                "  or FacilityID = 'TT-3'  or FacilityID = 'TT-4' or FacilityID = 'B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string onlySlot3 = " select FacilityID,Slot3 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' or " +
-                    "FacilityID = 'BB-1'  or FacilityID = 'BB-2'  or FacilityID = 'BB-3'  or FacilityID = 'BB-4' or FacilityID = 'TT-1'  or FacilityID = 'TT-2'" +
-                    "  or FacilityID = 'TT-3'  or FacilityID = 'TT-4' or FacilityID = 'B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string onlySlot4 = " select FacilityID,Slot4 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' or " +
-                    "FacilityID = 'BB-1'  or FacilityID = 'BB-2'  or FacilityID = 'BB-3'  or FacilityID = 'BB-4' or FacilityID = 'TT-1'  or FacilityID = 'TT-2'" +
-                    "  or FacilityID = 'TT-3'  or FacilityID = 'TT-4' or FacilityID = 'B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string onlySlot5 = " select FacilityID,Slot5 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' or " +
-                    "FacilityID = 'BB-1'  or FacilityID = 'BB-2'  or FacilityID = 'BB-3'  or FacilityID = 'BB-4' or FacilityID = 'TT-1'  or FacilityID = 'TT-2'" +
-                    "  or FacilityID = 'TT-3'  or FacilityID = 'TT-4' or FacilityID = 'B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string onlySlot6 = " select FacilityID,Slot6 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' or " +
-                    "FacilityID = 'BB-1'  or FacilityID = 'BB-2'  or FacilityID = 'BB-3'  or FacilityID = 'BB-4' or FacilityID = 'TT-1'  or FacilityID = 'TT-2'" +
-                    "  or FacilityID = 'TT-3'  or FacilityID = 'TT-4' or FacilityID = 'B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string onlySlot7 = " select FacilityID,Slot7 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' or " +
-                    "FacilityID = 'BB-1'  or FacilityID = 'BB-2'  or FacilityID = 'BB-3'  or FacilityID = 'BB-4' or FacilityID = 'TT-1'  or FacilityID = 'TT-2'" +
-                    "  or FacilityID = 'TT-3'  or FacilityID = 'TT-4' or FacilityID = 'B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-                string onlySlot8 = " select FacilityID,Slot8 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' or " +
-                    "FacilityID = 'BB-1'  or FacilityID = 'BB-2'  or FacilityID = 'BB-3'  or FacilityID = 'BB-4' or FacilityID = 'TT-1'  or FacilityID = 'TT-2'" +
-                    "  or FacilityID = 'TT-3'  or FacilityID = 'TT-4' or FacilityID = 'B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
-
-                con = new SqlConnection();
-                con.ConnectionString = @"data source=(local); initial catalog=SA46Team05BESNETProject;integrated security=SSPI";
-                cm = new SqlCommand();
-
-
-                if (ActivityComboBox.Text.Trim() == "Tennis" && TimeSlotComboBox.Text.Trim() == "")
-                {
-                    cm.CommandText = onlyTennis;
-                }
-
-                else if (ActivityComboBox.Text.Trim() == "" && TimeSlotComboBox.Text.Trim() == "09:00-10:00")
-                {
-                    cm.CommandText = onlySlot1;
-                }
-
-                else if (ActivityComboBox.Text.Trim() == "Table Tennis" && TimeSlotComboBox.Text.Trim() == "")
-                {
-                    cm.CommandText = onlyTableTennis;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Badminton" && TimeSlotComboBox.Text.Trim() == "")
-                {
-                    cm.CommandText = onlyBadminton;
-                }
-                else if (ActivityComboBox.Text.Trim() == "BasketBall" && TimeSlotComboBox.Text.Trim() == "")
-                {
-                    cm.CommandText = onlyBasketBall;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Tennis" && TimeSlotComboBox.Text.Trim() == "09:00-10:00")
-                {
-                    cm.CommandText = tennisSlot1;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Tennis" && TimeSlotComboBox.Text.Trim() == "10:00-11:00")
-                {
-                    cm.CommandText = tennisSlot2;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Tennis" && TimeSlotComboBox.Text.Trim() == "11:00-12:00")
-                {
-                    cm.CommandText = tennisSlot3;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Tennis" && TimeSlotComboBox.Text.Trim() == "12:00-13:00")
-                {
-                    cm.CommandText = tennisSlot4;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Tennis" && TimeSlotComboBox.Text.Trim() == "13:00-14:00")
-                {
-                    cm.CommandText = tennisSlot5;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Tennis" && TimeSlotComboBox.Text.Trim() == "14:00-15:00")
-                {
-                    cm.CommandText = tennisSlot6;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Tennis" && TimeSlotComboBox.Text.Trim() == "15:00-16:00")
-                {
-                    cm.CommandText = tennisSlot7;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Tennis" && TimeSlotComboBox.Text.Trim() == "16:00-17:00")
-                {
-                    cm.CommandText = tennisSlot8;
-                }
-
-                else if (ActivityComboBox.Text.Trim() == "Table Tennis" && TimeSlotComboBox.Text.Trim() == "09:00-10:00")
-                {
-                    cm.CommandText = tableTennisSlot1;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Table Tennis" && TimeSlotComboBox.Text.Trim() == "10:00-11:00")
-                {
-                    cm.CommandText = tableTennisSlot2;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Table Tennis" && TimeSlotComboBox.Text.Trim() == "11:00-12:00")
-                {
-                    cm.CommandText = tableTennisSlot3;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Table Tennis" && TimeSlotComboBox.Text.Trim() == "12:00-13:00")
-                {
-                    cm.CommandText = tableTennisSlot4;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Table Tennis" && TimeSlotComboBox.Text.Trim() == "13:00-14:00")
-                {
-                    cm.CommandText = tableTennisSlot5;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Table Tennis" && TimeSlotComboBox.Text.Trim() == "14:00-15:00")
-                {
-                    cm.CommandText = tableTennisSlot6;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Table Tennis" && TimeSlotComboBox.Text.Trim() == "15:00-16:00")
-                {
-                    cm.CommandText = tableTennisSlot7;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Table Tennis" && TimeSlotComboBox.Text.Trim() == "16:00-17:00")
-                {
-                    cm.CommandText = tableTennisSlot8;
-                }
-
-                else if (ActivityComboBox.Text.Trim() == "Badminton" && TimeSlotComboBox.Text.Trim() == "09:00-10:00")
-                {
-                    cm.CommandText = badmintonSlot1;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Badminton" && TimeSlotComboBox.Text.Trim() == "10:00-11:00")
-                {
-                    cm.CommandText = badmintonSlot2;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Badminton" && TimeSlotComboBox.Text.Trim() == "11:00-12:00")
-                {
-                    cm.CommandText = badmintonSlot3;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Badminton" && TimeSlotComboBox.Text.Trim() == "12:00-13:00")
-                {
-                    cm.CommandText = badmintonSlot4;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Badminton" && TimeSlotComboBox.Text.Trim() == "13:00-14:00")
-                {
-                    cm.CommandText = badmintonSlot5;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Badminton" && TimeSlotComboBox.Text.Trim() == "14:00-15:00")
-                {
-                    cm.CommandText = badmintonSlot6;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Badminton" && TimeSlotComboBox.Text.Trim() == "15:00-16:00")
-                {
-                    cm.CommandText = badmintonSlot7;
-                }
-                else if (ActivityComboBox.Text.Trim() == "Badminton" && TimeSlotComboBox.Text.Trim() == "16:00-17:00")
-                {
-                    cm.CommandText = badmintonSlot8;
-                }
-
-                else if (ActivityComboBox.Text.Trim() == "BasketBall" && TimeSlotComboBox.Text.Trim() == "09:00-10:00")
-                {
-                    cm.CommandText = basketBallSlot1;
-                }
-                else if (ActivityComboBox.Text.Trim() == "BasketBall" && TimeSlotComboBox.Text.Trim() == "10:00-11:00")
-                {
-                    cm.CommandText = basketBallSlot2;
-                }
-                else if (ActivityComboBox.Text.Trim() == "BasketBall" && TimeSlotComboBox.Text.Trim() == "11:00-12:00")
-                {
-                    cm.CommandText = basketBallSlot3;
-                }
-                else if (ActivityComboBox.Text.Trim() == "BasketBall" && TimeSlotComboBox.Text.Trim() == "12:00-13:00")
-                {
-                    cm.CommandText = basketBallSlot4;
-                }
-                else if (ActivityComboBox.Text.Trim() == "BasketBall" && TimeSlotComboBox.Text.Trim() == "13:00-14:00")
-                {
-                    cm.CommandText = basketBallSlot5;
-                }
-                else if (ActivityComboBox.Text.Trim() == "BasketBall" && TimeSlotComboBox.Text.Trim() == "14:00-15:00")
-                {
-                    cm.CommandText = basketBallSlot6;
-                }
-                else if (ActivityComboBox.Text.Trim() == "BasketBall" && TimeSlotComboBox.Text.Trim() == "15:00-16:00")
-                {
-                    cm.CommandText = basketBallSlot7;
-                }
-                else if (ActivityComboBox.Text.Trim() == "BasketBall" && TimeSlotComboBox.Text.Trim() == "16:00-17:00")
-                {
-                    cm.CommandText = basketBallSlot8;
-                }
-
-                else if (ActivityComboBox.Text.Trim() == "" && TimeSlotComboBox.Text.Trim() == "09:00-10:00")
-                {
-                    cm.CommandText = onlySlot1;
-                }
-                else if (ActivityComboBox.Text.Trim() == "" && TimeSlotComboBox.Text.Trim() == "10:00-11:00")
-                {
-                    cm.CommandText = onlySlot2;
-                }
-                else if (ActivityComboBox.Text.Trim() == "" && TimeSlotComboBox.Text.Trim() == "11:00-12:00")
-                {
-                    cm.CommandText = onlySlot3;
-                }
-                else if (ActivityComboBox.Text.Trim() == "" && TimeSlotComboBox.Text.Trim() == "12:00-13:00")
-                {
-                    cm.CommandText = onlySlot4;
-                }
-                else if (ActivityComboBox.Text.Trim() == "" && TimeSlotComboBox.Text.Trim() == "13:00-14:00")
-                {
-                    cm.CommandText = onlySlot5;
-                }
-                else if (ActivityComboBox.Text.Trim() == "" && TimeSlotComboBox.Text.Trim() == "14:00-15:00")
-                {
-                    cm.CommandText = onlySlot6;
-                }
-                else if (ActivityComboBox.Text.Trim() == "" && TimeSlotComboBox.Text.Trim() == "15:00-16:00")
-                {
-                    cm.CommandText = onlySlot7;
-                }
-                else if (ActivityComboBox.Text.Trim() == "" && TimeSlotComboBox.Text.Trim() == "16:00-17:00")
-                {
-                    cm.CommandText = onlySlot8;
-                }
-
-                cm.Connection = con;
-                con.Open();
-                adap = new SqlDataAdapter(cm);
-                ds = new DataSet();
-                adap.Fill(ds, "1");
-                FacilitiesDataGridView.DataSource = ds.Tables[0];
-
+                activity = tennis;
             }
-            catch
+            else if (ActivityComboBox.Text == "Table Tennis")
             {
-                MessageBox.Show("Please select criteria to search");
+                activity = tableTennis;
             }
+            else if (ActivityComboBox.Text == "Badminton")
+            {
+                activity = badminton;
+            }
+            else if (ActivityComboBox.Text == "Basketball")
+            {
+                activity = basketBall;
+            }
+            else if (ActivityComboBox.Text == "")
+            {
+                activity = allActivity;
+            }
+            if (TimeSlotComboBox.Text == "09:00-10:00")
+            {
+                slot = ",Slot1";
+            }
+            else if (TimeSlotComboBox.Text == "10:00-11:00")
+            {
+                slot = ",Slot2";
+            }
+            else if (TimeSlotComboBox.Text == "11:00-12:00")
+            {
+                slot = ",Slot3";
+            }
+            else if (TimeSlotComboBox.Text == "12:00-13:00")
+            {
+                slot = ",Slot4";
+            }
+            else if (TimeSlotComboBox.Text == "13:00-14:00")
+            {
+                slot = ",Slot5";
+            }
+            else if (TimeSlotComboBox.Text == "14:00-15:00")
+            {
+                slot = ",Slot6";
+            }
+            else if (TimeSlotComboBox.Text == "15:00-16:00")
+            {
+                slot = ",Slot7";
+            }
+            else if (TimeSlotComboBox.Text == "16:00-17:00")
+            {
+                slot = ",Slot8";
+            }
+            else if (TimeSlotComboBox.Text == "")
+            {
+                slot = ",Slot1,Slot2,Slot3,Slot4,Slot5,Slot6,Slot7,Slot8";
+            }
+
+
+            con = new SqlConnection();
+            con.ConnectionString = @"data source=(local); initial catalog=SA46Team05BESNETProject;integrated security=SSPI";
+            cm = new SqlCommand();
+
+            cm.CommandText = Query(activity, slot);
+            cm.Connection = con;
+            con.Open();
+            adap = new SqlDataAdapter(cm);
+            ds = new DataSet();
+            adap.Fill(ds, "1");
+            FacilitiesDataGridView.DataSource = ds.Tables[0];
         }
 
         private void QueryForm_Load(object sender, EventArgs e)
