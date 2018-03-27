@@ -35,6 +35,8 @@ namespace SA46Team05BESNETProject
                 string onlyTableTennis = " select *  from Availabilities where FacilityID = 'TT-1'or FacilityID = 'TT-2'or FacilityID = 'TT-3'or FacilityID = 'TT-4'";
                 string onlyBadminton = " select *  from Availabilities where FacilityID = 'B-1'or FacilityID = 'B-2'or FacilityID = 'B-3'or FacilityID = 'B-4'";
                 string onlyBasketBall = " select *  from Availabilities where FacilityID = 'BB-1'or FacilityID = 'BB-2'or FacilityID = 'BB-3'or FacilityID = 'BB-4'";
+
+
                 string tennisSlot1 = " select FacilityID,Slot1 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
                 string tennisSlot2 = " select FacilityID,Slot2 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
                 string tennisSlot3 = " select FacilityID,Slot3 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
@@ -43,6 +45,7 @@ namespace SA46Team05BESNETProject
                 string tennisSlot6 = " select FacilityID,Slot6 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
                 string tennisSlot7 = " select FacilityID,Slot7 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
                 string tennisSlot8 = " select FacilityID,Slot8 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' ";
+
                 string tableTennisSlot1 = " select FacilityID,Slot1 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
                 string tableTennisSlot2 = " select FacilityID,Slot2 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
                 string tableTennisSlot3 = " select FacilityID,Slot3 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
@@ -51,6 +54,7 @@ namespace SA46Team05BESNETProject
                 string tableTennisSlot6 = " select FacilityID,Slot6 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
                 string tableTennisSlot7 = " select FacilityID,Slot7 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
                 string tableTennisSlot8 = " select FacilityID,Slot8 from Availabilities where FacilityID='TT-1' or FacilityID = 'TT-2' or FacilityID = 'TT-3'  or FacilityID = 'TT-4'";
+
                 string badmintonSlot1 = " select FacilityID,Slot1 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
                 string badmintonSlot2 = " select FacilityID,Slot2 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
                 string badmintonSlot3 = " select FacilityID,Slot3 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
@@ -59,6 +63,7 @@ namespace SA46Team05BESNETProject
                 string badmintonSlot6 = " select FacilityID,Slot6 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
                 string badmintonSlot7 = " select FacilityID,Slot7 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
                 string badmintonSlot8 = " select FacilityID,Slot8 from Availabilities where FacilityID='B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
+
                 string basketBallSlot1 = " select FacilityID,Slot1 from Availabilities where FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
                 string basketBallSlot2 = " select FacilityID,Slot2 from Availabilities where FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
                 string basketBallSlot3 = " select FacilityID,Slot3 from Availabilities where FacilityID='BB-1' or FacilityID = 'BB-2' or FacilityID = 'BB-3'  or FacilityID = 'BB-4'";
@@ -93,20 +98,21 @@ namespace SA46Team05BESNETProject
                 string onlySlot8 = " select FacilityID,Slot8 from Availabilities where FacilityID ='T-1'or FacilityID ='T-2'or FacilityID ='T-3'or FacilityID ='T-4' or " +
                     "FacilityID = 'BB-1'  or FacilityID = 'BB-2'  or FacilityID = 'BB-3'  or FacilityID = 'BB-4' or FacilityID = 'TT-1'  or FacilityID = 'TT-2'" +
                     "  or FacilityID = 'TT-3'  or FacilityID = 'TT-4' or FacilityID = 'B-1' or FacilityID = 'B-2' or FacilityID = 'B-3'  or FacilityID = 'B-4'";
+
                 con = new SqlConnection();
                 con.ConnectionString = @"data source=(local); initial catalog=SA46Team05BESNETProject;integrated security=SSPI";
                 cm = new SqlCommand();
+
+
                 if (ActivityComboBox.Text.Trim() == "Tennis" && TimeSlotComboBox.Text.Trim() == "")
                 {
                     cm.CommandText = onlyTennis;
                 }
 
-
                 else if (ActivityComboBox.Text.Trim() == "" && TimeSlotComboBox.Text.Trim() == "09:00-10:00")
                 {
                     cm.CommandText = onlySlot1;
                 }
-
 
                 else if (ActivityComboBox.Text.Trim() == "Table Tennis" && TimeSlotComboBox.Text.Trim() == "")
                 {

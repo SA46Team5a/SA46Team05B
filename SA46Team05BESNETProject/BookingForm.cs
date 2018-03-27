@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace SA46Team05BESNETProject
 {
-    public partial class BookingForm : Form
+    public partial class BookingForm : TemplateForm
     {
         //To create new Entity class:
         SA46Team05BESNETProjectEntities context = new SA46Team05BESNETProjectEntities();
@@ -19,7 +19,6 @@ namespace SA46Team05BESNETProject
         MemberQueryForm memberQueryForm ;
 
         string name="";
-        string nric;
 
         public string NAME
         {
@@ -32,19 +31,6 @@ namespace SA46Team05BESNETProject
                 name = value;
             }
         }
-
-        public string NRIC
-        {
-            get
-            {
-                return nric;
-            }
-            set
-            {
-                nric = value;
-            }
-        }
-
 
         public BookingForm()
         {
@@ -130,98 +116,57 @@ namespace SA46Team05BESNETProject
         private void BookButton_Click(object sender, EventArgs e)
         {
             //check for empty fields and valid member entries
-            bool fieldsEmpty = false;
-            bool correctMember = false;
+            bool fieldsEmpty = CheckEmptyFields();
+            bool correctMember = CheckCorrectMembers();
             int availabilityofFacility = 0;
 
-            List<Member> mCorrect = context.Members.Where(x => x.NRIC != String.Empty).ToList();
 
-            foreach (Control g in this.Controls)
-            {
-                if (g is GroupBox)
-                {
-                    foreach (Control c in g.Controls)
-                    {
-                        if (c is TextBox && c.Text.Equals(String.Empty))
-                            fieldsEmpty = true;
-                        if (c is ComboBox && c.Text.Equals(String.Empty))
-                            fieldsEmpty = true;
-                    }
-                }
-            }
-
-            foreach (Member m in mCorrect)
-            {
-                if (m.NRIC.ToString() == MemberFINTextBox.Text && m.MemberName.ToString() == MemberNameTextBox.Text)
-                {
-                    correctMember = true;
-                }
-            }
-
-            //Add entry into Transactions Table if all fields are filled
+            //Add entry into Transactions Table if all fields are filled and correct
             if (!fieldsEmpty && correctMember == true)
             {
-
-                //string to store the input
-                string bookingDetails = "";
                 //Get last Transaction ID
                 int lastID = int.Parse(context.Transactions.OrderByDescending(x => x.TransactionID).Select(y => y.TransactionID).First().ToString());
 
-                //Create new Transaction
+                //Create new Transaction and Facility
                 Transaction t = new Transaction();
+                
 
                 t.TransactionID = lastID + 1;
                 t.NRIC = MemberFINTextBox.Text;
                 t.FacilityID = FacilityIDComboBox.Text;
-                t.BookingDate = DateTime.Today.AddDays(1);
-                t.Timeslot = TimeSlotComboBox.Text;
 
                 Facility f = context.Facilities.Where(x => x.FacilityID == t.FacilityID).FirstOrDefault();
+                t.BookingDate = DateTime.Today.AddDays(1);
+                t.Timeslot = TimeSlotComboBox.Text;
                 t.Price = f.Price;
 
+                //Get t.SlotNumber from the selected time option in combobox
+                switch (TimeSlotComboBox.Text)
+                {
+                    case "09:00-10:00":
+                        t.Slot = "Slot1"; break;
+                    case "10:00-11:00":
+                        t.Slot = "Slot2"; break;
+                    case "11:00-12:00":
+                        t.Slot = "Slot3"; break;
+                    case "12:00-13:00":
+                        t.Slot = "Slot4"; break;
+                    case "13:00-14:00":
+                        t.Slot = "Slot5"; break;
+                    case "14:00-15:00":
+                        t.Slot = "Slot6"; break;
+                    case "15:00-16:00":
+                        t.Slot = "Slot7"; break;
+                    case "16:00-17:00":
+                        t.Slot = "Slot8"; break;
+                }
+
+                //CheckAvailabilty method inherit from Template Form
                 availabilityofFacility = CheckAvailabilityTable(t.FacilityID, t.Slot);
 
                 if(availabilityofFacility == 1)
                 {
-                    //Get SlotNumber from the selected time option in combobox
-                    switch (TimeSlotComboBox.Text)
-                    {
-                        case "09:00-10:00":
-                            t.Slot = "Slot1"; break;
-                        case "10:00-11:00":
-                            t.Slot = "Slot2"; break;
-                        case "11:00-12:00":
-                            t.Slot = "Slot3"; break;
-                        case "12:00-13:00":
-                            t.Slot = "Slot4"; break;
-                        case "13:00-14:00":
-                            t.Slot = "Slot5"; break;
-                        case "14:00-15:00":
-                            t.Slot = "Slot6"; break;
-                        case "15:00-16:00":
-                            t.Slot = "Slot7"; break;
-                        case "16:00-17:00":
-                            t.Slot = "Slot8"; break;
-                    }
-
-                    foreach (PropertyInfo propertyInfo in t.GetType().GetProperties())
-                    {
-                        if (propertyInfo.Name.ToString() != "Facility" && propertyInfo.Name.ToString() != "Member")
-                        {
-                            bookingDetails += propertyInfo.Name.ToString() + " : " + propertyInfo.GetValue(t, null) + Environment.NewLine;
-                        }
-                    }
-                    DialogResult dialogResult = MessageBox.Show(bookingDetails, "Confirm Booking", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        //Update Availability Table---Availability = 1 is place is available
-
-                        UpdateAvailabilityTable(t.FacilityID, t.Slot, 0);
-
-                        //Save Changes in database
-                        context.Transactions.Add(t);
-                        context.SaveChanges();
-                    }
+                    ConfirmBooking(t);
                 }
                 else
                 {
@@ -237,65 +182,74 @@ namespace SA46Team05BESNETProject
             {
                 MessageBox.Show("Please key in correct member details");
             }
-
-
         }
 
-        protected void UpdateAvailabilityTable(string FacilityID,string Slot,int availability)
+        private void ConfirmBooking(Transaction t)
         {
-            Availability a = context.Availabilities.Where(x => x.FacilityID == FacilityID).FirstOrDefault();
+            //string to store the input
+            string bookingDetails = "";
 
-            switch (Slot)
+            
+
+            //Get Booking details
+            foreach (PropertyInfo propertyInfo in t.GetType().GetProperties())
             {
-                case "Slot1":
-                    a.Slot1 = availability; break;
-                case "Slot2":
-                    a.Slot2 = availability; break;
-                case "Slot3":
-                    a.Slot3 = availability; break;
-                case "Slot4":
-                    a.Slot4 = availability; break;
-                case "Slot5":
-                    a.Slot5 = availability; break;
-                case "Slot6":
-                    a.Slot6 = availability; break;
-                case "Slot7":
-                    a.Slot7 = availability; break;
-                case "Slot8":
-                    a.Slot8 = availability; break;
+                if (propertyInfo.Name.ToString() != "Facility" && propertyInfo.Name.ToString() != "Member")
+                {
+                    bookingDetails += propertyInfo.Name.ToString() + " : " + propertyInfo.GetValue(t, null) + Environment.NewLine;
+                }
+            }
+
+            //Confirm Booking
+            DialogResult dialogResult = MessageBox.Show(bookingDetails, "Confirm Booking", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //Update Availability Table---Availability = 1 is place is available (inherit from templateform)
+
+                UpdateAvailabilityTable(t.FacilityID, t.Slot, 0);
+
+                //Save Changes in database
+                context.Transactions.Add(t);
+                context.SaveChanges();
             }
         }
 
-        private int CheckAvailabilityTable(string FacilityID, string Slot)
-        {
-            int availability;
-            Availability a = context.Availabilities.Where(x => x.FacilityID == FacilityID).FirstOrDefault();
+        
 
-            switch (Slot)
+        private bool CheckEmptyFields()
+        {
+            bool fieldsEmpty = false;
+            foreach (Control g in this.Controls)
             {
-                case "Slot1":
-                    availability = Convert.ToInt32(a.Slot1); break;
-                case "Slot2":
-                    availability = Convert.ToInt32(a.Slot2); break;
-                case "Slot3":
-                    availability = Convert.ToInt32(a.Slot3); break;
-                case "Slot4":
-                    availability = Convert.ToInt32(a.Slot4); break;
-                case "Slot5":
-                    availability = Convert.ToInt32(a.Slot5); break;
-                case "Slot6":
-                    availability = Convert.ToInt32(a.Slot6); break;
-                case "Slot7":
-                    availability = Convert.ToInt32(a.Slot7); break;
-                case "Slot8":
-                    availability = Convert.ToInt32(a.Slot8); break;
-                default:
-                    availability = 0; break;
+                if (g is GroupBox)
+                {
+                    foreach (Control c in g.Controls)
+                    {
+                        if (c is TextBox && c.Text.Equals(String.Empty))
+                            fieldsEmpty = true;
+                        if (c is ComboBox && c.Text.Equals(String.Empty))
+                            fieldsEmpty = true;
+                    }
+                }
             }
 
-            return availability;
+            return fieldsEmpty;
         }
 
+        private bool CheckCorrectMembers()
+        {
+            bool correctMember = false;
+            List<Member> mCorrect = context.Members.Where(x => x.NRIC != String.Empty).ToList();
 
+            foreach (Member m in mCorrect)
+            {
+                if (m.NRIC.ToString() == MemberFINTextBox.Text && m.MemberName.ToString() == MemberNameTextBox.Text)
+                {
+                    correctMember = true;
+                }
+            }
+
+            return correctMember;
+        }
     }
 }

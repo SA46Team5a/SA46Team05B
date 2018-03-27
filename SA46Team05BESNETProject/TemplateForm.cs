@@ -19,11 +19,8 @@ namespace SA46Team05BESNETProject
             InitializeComponent();
         }
 
-        private void TemplateForm_Load(object sender, EventArgs e)
-        {
 
-        }
-
+        //To update availability table to 1 or 0 when booking or cancel
         protected void UpdateAvailabilityTable(string FacilityID, string Slot, int availability)
         {
             Availability a = context.Availabilities.Where(x => x.FacilityID == FacilityID).FirstOrDefault();
@@ -48,5 +45,39 @@ namespace SA46Team05BESNETProject
                     a.Slot8 = availability; break;
             }
         }
+
+        //Check availability = 1 or 0 in Table
+        protected int CheckAvailabilityTable(string FacilityID, string Slot)
+        {
+            int availability;
+            Availability a = context.Availabilities.Where(x => x.FacilityID == FacilityID).FirstOrDefault();
+
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+
+            switch (Slot)
+            {
+                case "Slot1":
+                    availability = Convert.ToInt32(a.Slot1); break;
+                case "Slot2":
+                    availability = Convert.ToInt32(a.Slot2); break;
+                case "Slot3":
+                    availability = Convert.ToInt32(a.Slot3); break;
+                case "Slot4":
+                    availability = Convert.ToInt32(a.Slot4); break;
+                case "Slot5":
+                    availability = Convert.ToInt32(a.Slot5); break;
+                case "Slot6":
+                    availability = Convert.ToInt32(a.Slot6); break;
+                case "Slot7":
+                    availability = Convert.ToInt32(a.Slot7); break;
+                case "Slot8":
+                    availability = Convert.ToInt32(a.Slot8); break;
+                default:
+                    availability = 0; break;
+            }
+
+            return availability;
+        }
+
     }
 }

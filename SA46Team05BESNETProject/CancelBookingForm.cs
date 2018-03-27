@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SA46Team05BESNETProject
 {
-    public partial class CancelBookingForm :Form 
+    public partial class CancelBookingForm :TemplateForm 
     {
 
         SA46Team05BESNETProjectEntities context = new SA46Team05BESNETProjectEntities();
@@ -58,7 +58,7 @@ namespace SA46Team05BESNETProject
                 }
                 foreach (Transaction t in m.Transactions)
                 {
-                    if (t.BookingDate == tomorrowDate)
+                    if (t.BookingDate == tomorrowDate && !tList.Contains(t))
                     {
                         tList.Add(t);
                         //MessageBox.Show(BookedDataGridView.Rows.Count.ToString()); 
@@ -77,39 +77,18 @@ namespace SA46Team05BESNETProject
 
         private void BookedDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (BookedDataGridView.Columns[e.ColumnIndex].Name == "ToCancel" && e.RowIndex > -1)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                DataGridViewCell cell = BookedDataGridView.Rows[e.RowIndex].Cells["ToCancel"];
-                if (cell.Value is null)
-                    cell.Value = "Cancel";
-                else
-                    cell.Value = null;
+                if (BookedDataGridView.Columns[e.ColumnIndex].Name == "ToCancel" && e.RowIndex > -1)
+                {
+                    DataGridViewCell cell = BookedDataGridView.Rows[e.RowIndex].Cells["ToCancel"];
+                    if (cell.Value is null)
+                        cell.Value = "Cancel";
+                    else
+                        cell.Value = null;
+                }
             }
 
-        }
-        private  void UpdateAvailabilityTable(string FacilityID, string Slot, int availability)
-        {
-            Availability a = context.Availabilities.Where(x => x.FacilityID == FacilityID).FirstOrDefault();
-
-            switch (Slot)
-            {
-                case "Slot1":
-                    a.Slot1 = availability; break;
-                case "Slot2":
-                    a.Slot2 = availability; break;
-                case "Slot3":
-                    a.Slot3 = availability; break;
-                case "Slot4":
-                    a.Slot4 = availability; break;
-                case "Slot5":
-                    a.Slot5 = availability; break;
-                case "Slot6":
-                    a.Slot6 = availability; break;
-                case "Slot7":
-                    a.Slot7 = availability; break;
-                case "Slot8":
-                    a.Slot8 = availability; break;
-            }
         }
 
         private void ConfirmCancelBookingButton_Click(object sender, EventArgs e)

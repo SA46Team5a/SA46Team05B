@@ -110,11 +110,6 @@ namespace SA46Team05BESNETProject
                     SA46Team05BESNETProjectEntities context = new SA46Team05BESNETProjectEntities();
                     Member M = context.Members.Where(x => x.NRIC == SearchTextBox.Text.Trim()).First();
 
-                    //NRICTextBox.Text = M.NRIC;
-                    //MemberNameTextBox.Text=M.MemberName;
-                    //GenderComboBox.Text=M.Gender;
-                    //AgeTextBox.Text=M.Age.ToString();
-                    //PhoneNumberTextBox.Text=M.Phone;
                     Show(M);
                     List<Member> SortList = context.Members.ToList();
                     for (int i = 0; i < SortList.Count(); i++)
@@ -201,7 +196,6 @@ namespace SA46Team05BESNETProject
             M = cLst[posn];
             Show(M);
         }
-
 
 
         private void PhoneNumberTextBox_TextChanged(object sender, EventArgs e)
