@@ -27,7 +27,7 @@ For the Program to run smoothly, the following files and folders from the Team05
 /packages
 /SA46Team05BESNETProject
 SA46Team05BESNETProject.sln
-SA46Team05B ESNTET Project.bak
+SA46Team05BESNTETProject.bak
 
 
 
@@ -208,6 +208,7 @@ Potential Problems or Bugs
 
 1. In the Query Form, there may be instances where the the columns are not in order (i.e. Slot1 is not the first
    column)
+2. In the Query Form, no validation have been done to check if users' inputs are only "1" or "0".
 2. The DataGridview are designed to be editable, therefore some of the dataGridview can be be edited
 3. Enum/Dictionary can be used for storing the Slot names variables instead of using string to store each name. This
    will reduce hard coding and introduce loops when writing methods

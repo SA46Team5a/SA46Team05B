@@ -287,6 +287,16 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams>
+      <Diagram DiagramId="b4d4d841f8834be0ac14f73b3dd8ba94" Name="Diagram1">
+        <EntityTypeShape EntityType="SA46Team05BESNETProjectModel.Availability" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SA46Team05BESNETProjectModel.Facility" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SA46Team05BESNETProjectModel.Member" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SA46Team05BESNETProjectModel.Transaction" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="SA46Team05BESNETProjectModel.FK_Availabilities_Facilities" ManuallyRouted="false" />
+        <AssociationConnector Association="SA46Team05BESNETProjectModel.FK_Transactions_Facilities" ManuallyRouted="false" />
+        <AssociationConnector Association="SA46Team05BESNETProjectModel.FK_Transactions_Members" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
   </Designer>
 </edmx:Edmx>
